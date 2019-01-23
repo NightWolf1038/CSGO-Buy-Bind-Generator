@@ -35,7 +35,7 @@ namespace CSGO_Buy_Binds_Generator
         {
             if (hotkey == "")
             {
-                MessageBox.Show("You haven't selected a key you, yet nugget.");
+                MessageBox.Show("You haven't selected a key you, yet nugget.", "Key", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
 
             }
