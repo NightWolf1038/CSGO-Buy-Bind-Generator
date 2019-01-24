@@ -1,7 +1,5 @@
 # CSGO Buy Bind Generator
 
-With this program you can:
-
 * Create a Cfg with your own buy bind.
 * Save your buy bind to your custom Cfg.
 
