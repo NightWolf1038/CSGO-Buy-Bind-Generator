@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Threading;
+using System.Diagnostics;
 
 namespace CSGO_Buy_Binds_Generator
 {
@@ -40,6 +43,8 @@ namespace CSGO_Buy_Binds_Generator
         int totalcost = 0;
         bool otherkeys = false;
         int nadelimit = 0;
+        string changelog = "[23/01/2019] Version 3.5:" + Environment.NewLine + "- [Added] Create Cfg and Save To Cfg. Now you can create a Cfg or save your bind to an existent Cfg." + Environment.NewLine + "- [Updated] Weapons prices." + Environment.NewLine + "- [Fixed] Now you can choose both Molotov and Incendiary." + Environment.NewLine + "===================" + Environment.NewLine + "[02/12/2015] Version 3.4:" + Environment.NewLine + "- Fixed Numpad Slash hotkey (thanks to reddit user /u/f1ub)." + Environment.NewLine + "- Fixed SSG08 buy command. (thanks to reddit user /u/D13namic)." + Environment.NewLine + "===================" + Environment.NewLine + "[30/11/2015] Version 3.3:" + Environment.NewLine + "- Fixed Smoke Grenade (Thanks to reddit user /u/TheGamingPlatypus18)." + Environment.NewLine + "- Fixed Spelling for \"Confirm Key\" on key selection (Thanks to /u/Bluberrymuffins)." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.2:" + Environment.NewLine + "- Fixed M4A1-S buy bind." + Environment.NewLine + "- Within the code; Changed double to int." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.1:" + Environment.NewLine + "- Cleanup of some mess in the previous build and renamed Glock-20 to Glock-18." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.0:" + Environment.NewLine + "- Initial release.";
+        string appPath = AppDomain.CurrentDomain.BaseDirectory.ToString();
 
         private void generateButton_Click(object sender, EventArgs e)
         {
@@ -118,22 +123,18 @@ namespace CSGO_Buy_Binds_Generator
             {
                 nadelimit += 1;
             }
-            else nadelimit -= 1;
+            else
+            {
+                nadelimit -= 1;
+            }
 
             if (nadelimit > 4)
             {
-                MessageBox.Show("You can only select up to four grenades.");
+                MessageBox.Show("You can only select up to four grenades.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cb.Checked = false;
             }
 
             // Buys below
-
-            if (nadeCheck7.Checked)
-            {
-                incendiary = "buy incgrenade; ";
-                incendiarycost = 600;
-            }
-            else incendiary = "";
 
             if (nadeCheck1.Checked)
             {
@@ -165,17 +166,24 @@ namespace CSGO_Buy_Binds_Generator
 
             if (nadeCheck5.Checked)
             {
-                molotov = "buy molotov; ";
-                molotovcost = 400;
+                flashbang2 = "buy flashbang; ";
+                flashbang2cost = 200;
+                
             }
-            else molotov = "";
+            else flashbang2 = "";
 
             if (nadeCheck6.Checked)
             {
-                flashbang2 = "buy flashbang; ";
-                flashbang2cost = 200;
+                molotov = "buy molotov; ";
+                molotovcost = 400;
+                incendiary = "buy incgrenade; ";
+                incendiarycost = 600;
             }
-            else flashbang2 = "";
+            else
+            {
+                molotov = "";
+                incendiary = "";
+            }
 
             nadetotalcost = decoycost + flashbangcost + flashbang2cost + smokecost + hecost + incendiarycost + molotovcost;
             totalcost = armortotalcost + geartotalcost + nadetotalcost + primarytotalcost + secondarytotalcost;
@@ -197,7 +205,6 @@ namespace CSGO_Buy_Binds_Generator
             nadeCheck4.Checked = false;
             nadeCheck5.Checked = false;
             nadeCheck6.Checked = false;
-            nadeCheck7.Checked = false;
             noneRadio.Checked = true;
             none2Radio.Checked = true;
             keyLabel.Text = "None";
@@ -221,7 +228,7 @@ namespace CSGO_Buy_Binds_Generator
             {
                 return;
             }
-            System.Windows.Forms.Clipboard.SetText(resultBox.Text);
+            Clipboard.SetText(resultBox.Text);
         }
 
         private void primaryChecked(object sender, EventArgs e)
@@ -253,14 +260,22 @@ namespace CSGO_Buy_Binds_Generator
                     riflecost = 1700;
                     break;
                 case 6:
+                    rifles = "buy sg556; ";
+                    riflecost = 2750;
+                    break;
+                case 7:
+                    rifles = "buy aug; ";
+                    riflecost = 3150;
+                    break;
+                case 8:
                     rifles = "buy g3sg1; ";
                     riflecost = 5000;
                     break;
-                case 7:
+                case 9:
                     rifles = "buy scar20; ";
                     riflecost = 5000;
                     break;
-                case 8:
+                case 10:
                     rifles = "buy awp; ";
                     riflecost = 4750;
                     break;
@@ -289,7 +304,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 5:
                     heavys = "buy negev; ";
-                    heavycost = 5700;
+                    heavycost = 1700;
                     break;
             }
             switch (smgList.SelectedIndex)
@@ -304,7 +319,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 2:
                     smgs = "buy mp7; ";
-                    smgcost = 1700;
+                    smgcost = 1500;
                     break;
                 case 3:
                     smgs = "buy ump45; ";
@@ -396,7 +411,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 4:
                     secondary = "buy dual_barettas; ";
-                    secondarycost = 500;
+                    secondarycost = 400;
                     break;
                 case 5:
                     secondary = "buy tec9; ";
@@ -463,7 +478,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 5:
                     heavys = "buy negev; ";
-                    heavycost = 5700;
+                    heavycost = 1700;
                     break;
             }
             switch (smgList.SelectedIndex)
@@ -478,7 +493,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 2:
                     smgs = "buy mp7; ";
-                    smgcost = 1700;
+                    smgcost = 1500;
                     break;
                 case 3:
                     smgs = "buy ump45; ";
@@ -520,14 +535,22 @@ namespace CSGO_Buy_Binds_Generator
                     riflecost = 1700;
                     break;
                 case 6:
+                    rifles = "buy sg556; ";
+                    riflecost = 2750;
+                    break;
+                case 7:
+                    rifles = "buy aug; ";
+                    riflecost = 3150;
+                    break;
+                case 8:
                     rifles = "buy g3sg1; ";
                     riflecost = 5000;
                     break;
-                case 7:
+                case 9:
                     rifles = "buy scar20; ";
                     riflecost = 5000;
                     break;
-                case 8:
+                case 10:
                     rifles = "buy awp; ";
                     riflecost = 4750;
                     break;
@@ -552,7 +575,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 4:
                     secondary = "buy dual_barettas; ";
-                    secondarycost = 500;
+                    secondarycost = 400;
                     break;
                 case 5:
                     secondary = "buy tec9; ";
@@ -610,7 +633,7 @@ namespace CSGO_Buy_Binds_Generator
 
         private void aboutClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("CSGO Buy Bind Generator v3.4\nCreated by AwesomeAlvin");
+            MessageBox.Show("CSGO Buy Bind Generator v3.5\n\n- Created by AwesomeAlvin\n- Updated by NightWolf", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void selectkeyButton_Click(object sender, EventArgs e)
@@ -621,7 +644,23 @@ namespace CSGO_Buy_Binds_Generator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            //TODO: A better way to do this lol
+            FileStream fs = null;
+            if(!File.Exists(appPath + "\\changelog.txt"))
+            {
+                fs = File.Create(appPath + "\\changelog.txt");
+                fs.Close();
+                using (var writer = File.AppendText(appPath + "\\changelog.txt"))
+                    writer.Write(changelog);
+            }
+            else
+            {
+                File.Delete(appPath + "\\changelog.txt");
+                fs = File.Create(appPath + "\\changelog.txt");
+                fs.Close();
+                using (var writer = File.AppendText(appPath + "\\changelog.txt"))
+                    writer.Write(changelog);
+            }
         }
 
         private void keyChanged(object sender, EventArgs e)
@@ -747,6 +786,70 @@ namespace CSGO_Buy_Binds_Generator
                 keys = keyLabel.Text + " ";
             }
             resultBox.Text = "bind " + keys + "\"" + primary + secondary + gear1 + gear2 + gear3 + gear4 + grenades + "\"";
+        }
+
+        private void createCfg_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = "autoexec";
+            saveFile.Filter = "Cfg File (*.cfg)|*.cfg|All files (*.*)|*.*";
+
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                using (var writer = File.AppendText(saveFile.FileName))
+                {
+                    writer.Write(resultBox.Text);
+                }
+            }
+        }
+
+        private void saveToCfg_Click(object sender, EventArgs e)
+        {
+            string path;
+
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Cfg File (*.cfg)|*.cfg|All files (*.*)|*.*";
+            openFile.RestoreDirectory = true;
+
+            if(openFile.ShowDialog() == DialogResult.OK)
+            {
+                path = openFile.FileName;
+                using (var writer = File.AppendText(path))
+                {
+                    writer.WriteLine(resultBox.Text);
+                }
+            }
+        }
+
+        private void changelogLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (File.Exists(appPath + "\\changelog.txt"))
+                Process.Start(appPath + "\\changelog.txt");
+            else
+            {
+                MessageBox.Show("File not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FileStream fs = null;
+                fs = File.Create(appPath + "\\changelog.txt");
+                fs.Close();
+                using (var writer = File.AppendText(appPath + "\\changelog.txt"))
+                    writer.Write(changelog);
+                Process.Start(appPath + "\\changelog.txt");
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void githubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/NightWolf1038/CSGO-Buy-Bind-Generator/tree/NightWolf1038-branch");
+        }
+
+        private void steamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://steamcommunity.com/id/OfficialNightWolf/");
         }
     }
 }
