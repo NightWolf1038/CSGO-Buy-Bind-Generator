@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(selectKeyboard));
             this.buttonQ = new System.Windows.Forms.RadioButton();
             this.buttonW = new System.Windows.Forms.RadioButton();
             this.buttonE = new System.Windows.Forms.RadioButton();
@@ -1655,6 +1656,7 @@
             this.Controls.Add(this.buttonE);
             this.Controls.Add(this.buttonW);
             this.Controls.Add(this.buttonQ);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "selectKeyboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select a Key";

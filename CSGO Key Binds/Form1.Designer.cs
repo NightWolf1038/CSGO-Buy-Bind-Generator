@@ -42,6 +42,7 @@
             this.kevlarRadio = new System.Windows.Forms.RadioButton();
             this.kevlarhelmRadio = new System.Windows.Forms.RadioButton();
             this.nadeGroup = new System.Windows.Forms.GroupBox();
+            this.nadeCheck6 = new System.Windows.Forms.CheckBox();
             this.nadeCheck5 = new System.Windows.Forms.CheckBox();
             this.nadeCheck4 = new System.Windows.Forms.CheckBox();
             this.nadeCheck3 = new System.Windows.Forms.CheckBox();
@@ -65,7 +66,6 @@
             this.infoLink = new System.Windows.Forms.LinkLabel();
             this.selectkeyButton = new System.Windows.Forms.Button();
             this.keyLabel = new System.Windows.Forms.Label();
-            this.nadeCheck6 = new System.Windows.Forms.CheckBox();
             this.createCfg = new System.Windows.Forms.Button();
             this.saveToCfg = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -122,11 +122,12 @@
             "USP-S",
             "P2000",
             "P250",
-            "Dual Barettas",
+            "Dual Berettas",
             "Tec-9",
             "Five-SeveN",
             "CZ75-Auto",
-            "Desert Eagle"});
+            "Desert Eagle",
+            "R8 Revolver"});
             this.secondaryList.Location = new System.Drawing.Point(81, 40);
             this.secondaryList.Name = "secondaryList";
             this.secondaryList.Size = new System.Drawing.Size(121, 21);
@@ -238,6 +239,17 @@
             this.nadeGroup.TabStop = false;
             this.nadeGroup.Text = "Grenades:";
             // 
+            // nadeCheck6
+            // 
+            this.nadeCheck6.AutoSize = true;
+            this.nadeCheck6.Location = new System.Drawing.Point(6, 133);
+            this.nadeCheck6.Name = "nadeCheck6";
+            this.nadeCheck6.Size = new System.Drawing.Size(124, 17);
+            this.nadeCheck6.TabIndex = 5;
+            this.nadeCheck6.Text = "Incendiary / Molotov";
+            this.nadeCheck6.UseVisualStyleBackColor = true;
+            this.nadeCheck6.CheckedChanged += new System.EventHandler(this.nadeCheck);
+            // 
             // nadeCheck5
             // 
             this.nadeCheck5.Location = new System.Drawing.Point(6, 64);
@@ -308,8 +320,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 26);
             this.label1.TabIndex = 17;
-            this.label1.Text = "Paste the generated code into the console ingame, or paste it into config.cfg fou" +
-    "nd in your CSGO folder or into your custom cfg.";
+            this.label1.Text = "Paste the generated code into the console ingame, or into config.cfg found in you" +
+    "r CSGO folder or into your custom cfg.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -368,7 +380,8 @@
             "MP7",
             "UMP-45",
             "P90",
-            "PP-Bizon"});
+            "PP-Bizon",
+            "MP5-SD"});
             this.smgList.Location = new System.Drawing.Point(81, 91);
             this.smgList.Name = "smgList";
             this.smgList.Size = new System.Drawing.Size(121, 21);
@@ -508,17 +521,6 @@
             this.keyLabel.Text = "None";
             this.keyLabel.TextChanged += new System.EventHandler(this.keyChanged);
             // 
-            // nadeCheck6
-            // 
-            this.nadeCheck6.AutoSize = true;
-            this.nadeCheck6.Location = new System.Drawing.Point(6, 133);
-            this.nadeCheck6.Name = "nadeCheck6";
-            this.nadeCheck6.Size = new System.Drawing.Size(124, 17);
-            this.nadeCheck6.TabIndex = 5;
-            this.nadeCheck6.Text = "Incendiary / Molotov";
-            this.nadeCheck6.UseVisualStyleBackColor = true;
-            this.nadeCheck6.CheckedChanged += new System.EventHandler(this.nadeCheck);
-            // 
             // createCfg
             // 
             this.createCfg.Location = new System.Drawing.Point(12, 360);
@@ -592,7 +594,7 @@
             // 
             this.githubToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("githubToolStripMenuItem.Image")));
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.githubToolStripMenuItem.Text = "Github";
             this.githubToolStripMenuItem.Click += new System.EventHandler(this.githubToolStripMenuItem_Click);
             // 
@@ -600,19 +602,19 @@
             // 
             this.steamToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("steamToolStripMenuItem.Image")));
             this.steamToolStripMenuItem.Name = "steamToolStripMenuItem";
-            this.steamToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.steamToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.steamToolStripMenuItem.Text = "Steam";
             this.steamToolStripMenuItem.Click += new System.EventHandler(this.steamToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(107, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -641,6 +643,7 @@
             this.Controls.Add(this.keysLabel);
             this.Controls.Add(this.resultBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
