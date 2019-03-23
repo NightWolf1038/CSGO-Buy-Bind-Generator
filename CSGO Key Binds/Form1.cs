@@ -20,7 +20,7 @@ namespace CSGO_Buy_Binds_Generator
         {
             InitializeComponent();
         }
-        string version = "3.5.1";
+        string version = "3.5.2";
         string keys = "";
         string primary = "";
         string rifles = "";
@@ -44,7 +44,7 @@ namespace CSGO_Buy_Binds_Generator
         int totalcost = 0;
         bool otherkeys = false;
         int nadelimit = 0;
-        string changelog = "[28/02/2019] Version 3.5.1:" + Environment.NewLine + "- Added MP5 and R8 Revolver to the weapons list." + Environment.NewLine + "===================" + Environment.NewLine + "[23/01/2019] Version 3.5:" + Environment.NewLine + "- [Added] Create Cfg and Save To Cfg. Now you can create a Cfg or save your bind to an existent Cfg." + Environment.NewLine + "- [Updated] Weapons prices." + Environment.NewLine + "- [Fixed] Now you can choose both Molotov and Incendiary." + Environment.NewLine + "===================" + Environment.NewLine + "[02/12/2015] Version 3.4:" + Environment.NewLine + "- Fixed Numpad Slash hotkey (thanks to reddit user /u/f1ub)." + Environment.NewLine + "- Fixed SSG08 buy command. (thanks to reddit user /u/D13namic)." + Environment.NewLine + "===================" + Environment.NewLine + "[30/11/2015] Version 3.3:" + Environment.NewLine + "- Fixed Smoke Grenade (Thanks to reddit user /u/TheGamingPlatypus18)." + Environment.NewLine + "- Fixed Spelling for \"Confirm Key\" on key selection (Thanks to /u/Bluberrymuffins)." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.2:" + Environment.NewLine + "- Fixed M4A1-S buy bind." + Environment.NewLine + "- Within the code; Changed double to int." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.1:" + Environment.NewLine + "- Cleanup of some mess in the previous build and renamed Glock-20 to Glock-18." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.0:" + Environment.NewLine + "- Initial release.";
+        string changelog = "[23/03/2019] Version 3.5.2:" + Environment.NewLine + "- Updated prices for Nova, Sawed-Off, Mag-7 and AUG." + Environment.NewLine + "===================" + Environment.NewLine + "[28/02/2019] Version 3.5.1:" + Environment.NewLine + "- Added MP5 and R8 Revolver to the weapons list." + Environment.NewLine + "===================" + Environment.NewLine + "[23/01/2019] Version 3.5:" + Environment.NewLine + "- [Added] Create Cfg and Save To Cfg. Now you can create a Cfg or save your bind to an existent Cfg." + Environment.NewLine + "- [Updated] Weapons prices." + Environment.NewLine + "- [Fixed] Now you can choose both Molotov and Incendiary." + Environment.NewLine + "===================" + Environment.NewLine + "[02/12/2015] Version 3.4:" + Environment.NewLine + "- Fixed Numpad Slash hotkey (thanks to reddit user /u/f1ub)." + Environment.NewLine + "- Fixed SSG08 buy command. (thanks to reddit user /u/D13namic)." + Environment.NewLine + "===================" + Environment.NewLine + "[30/11/2015] Version 3.3:" + Environment.NewLine + "- Fixed Smoke Grenade (Thanks to reddit user /u/TheGamingPlatypus18)." + Environment.NewLine + "- Fixed Spelling for \"Confirm Key\" on key selection (Thanks to /u/Bluberrymuffins)." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.2:" + Environment.NewLine + "- Fixed M4A1-S buy bind." + Environment.NewLine + "- Within the code; Changed double to int." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.1:" + Environment.NewLine + "- Cleanup of some mess in the previous build and renamed Glock-20 to Glock-18." + Environment.NewLine + "===================" + Environment.NewLine + "[29/11/2015] Version 3.0:" + Environment.NewLine + "- Initial release.";
         string appPath = AppDomain.CurrentDomain.BaseDirectory.ToString();
 
         private void generateButton_Click(object sender, EventArgs e)
@@ -266,7 +266,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 7:
                     rifles = "buy aug; ";
-                    riflecost = 3150;
+                    riflecost = 3300;
                     break;
                 case 8:
                     rifles = "buy g3sg1; ";
@@ -285,7 +285,7 @@ namespace CSGO_Buy_Binds_Generator
             {
                 case 0:
                     heavys = "buy nova; ";
-                    heavycost = 1200;
+                    heavycost = 1050;
                     break;
                 case 1:
                     heavys = "buy xm1014; ";
@@ -293,11 +293,11 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 2:
                     heavys = "buy mag7; ";
-                    heavycost = 1800;
+                    heavycost = 1300;
                     break;
                 case 3:
                     heavys = "buy sawedoff; ";
-                    heavycost = 1200;
+                    heavycost = 1100;
                     break;
                 case 4:
                     heavys = "buy m249; ";
@@ -467,7 +467,7 @@ namespace CSGO_Buy_Binds_Generator
             {
                 case 0:
                     heavys = "buy nova; ";
-                    heavycost = 1200;
+                    heavycost = 1050;
                     break;
                 case 1:
                     heavys = "buy xm1014; ";
@@ -475,11 +475,11 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 2:
                     heavys = "buy mag7; ";
-                    heavycost = 1800;
+                    heavycost = 1300;
                     break;
                 case 3:
                     heavys = "buy sawedoff; ";
-                    heavycost = 1200;
+                    heavycost = 1100;
                     break;
                 case 4:
                     heavys = "buy m249; ";
@@ -553,7 +553,7 @@ namespace CSGO_Buy_Binds_Generator
                     break;
                 case 7:
                     rifles = "buy aug; ";
-                    riflecost = 3150;
+                    riflecost = 3300;
                     break;
                 case 8:
                     rifles = "buy g3sg1; ";
